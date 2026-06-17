@@ -26,7 +26,7 @@ function quickselect(arr, start, end, wantIdx) {
     }
   
     throw new Error('selection failed');
-  }
+}
 
   
 function checkInput(arr, k) {
@@ -39,6 +39,28 @@ function checkInput(arr, k) {
     if (!Number.isInteger(k) || k < 1 || k > arr.length) {
       throw new Error(`k must be between 1 and ${arr.length}`);
     }
-  }
+}
+
+function swap(arr, a, b) {
+  const tmp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = tmp;
+}
+
+function partition(arr, start, end) {
+  const pivot = arr[end];
+  let split = start;
+
+  for (let i = start; i < end; i++) {
+    if (arr[i] <= pivot) {
+      swap(arr, split, i);
+      split++;
+    }
+}
+
+  swap(arr, split, end);
+  return split;
+}
+
 console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2)); // Output: 5
 console.log(findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4)); // Output
